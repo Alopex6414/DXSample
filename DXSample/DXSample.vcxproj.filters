@@ -14,4 +14,111 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CerasusBlend.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusElement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cerasusfps.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusGrowArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusStatic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusUICommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CerasusUnit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectCommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectFont.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectGraphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectGraphics2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectGraphics3D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectMesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSafe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectShow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSound.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSprite.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSurface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectThreadSafe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinProcess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinUtilities.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDXSampleCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WinProcess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WinUtilities.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CDXSampleCore.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DXSample.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\DXSample.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
