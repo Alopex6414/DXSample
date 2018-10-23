@@ -81,6 +81,10 @@ public:
 	void DXSampleCoreUpdate();		//À¢–¬
 	void DXSampleCoreRender();		//‰÷»æ
 
+protected:
+	void DXSampleCoreDrawStatic();	//ªÊ÷∆æ≤Ã¨
+	void DXSampleCoreDrawFPS();	//ªÊ÷∆fps
+
 };
 
 

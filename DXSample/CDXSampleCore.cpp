@@ -128,6 +128,37 @@ void CDXSampleCore::DXSampleCoreRender()
 	m_pDirectGraphics3DMain->DirectGraphics3DRenderStateSetting();
 	m_pDirectGraphics3DMain->DirectGraphics3DRenderStateAlphaDisable();
 
+	DXSampleCoreDrawStatic();
+	DXSampleCoreDrawFPS();
+
 	m_pDirectGraphicsMain->DirectGraphicsEnd();
+}
+
+//CDXSampleCore 绘制静态文本
+void CDXSampleCore::DXSampleCoreDrawStatic()
+{
+	RECT Rect;
+
+	GetClientRect(g_hWnd, &Rect);
+
+	//Direct3D 绘制显卡信息
+	Rect.top += 0;
+	m_pDirectGraphicsMain->DirectGraphicsFontDrawTextAdapterType(&Rect, DT_TOP | DT_LEFT, D3DXCOLOR(1.0f, 0.5f, 0.5f, 1.0f));
+
+	//Direct3D 绘制屏幕分辨率
+	Rect.top += 20;
+	m_pDirectGraphicsMain->DirectGraphicsFontDrawTextScreen(&Rect, DT_TOP | DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 0.5f, 1.0f));
+
+	//Direct3D 绘制缓冲模板
+	Rect.top += 20;
+	m_pDirectGraphicsMain->DirectGraphicsFontDrawTextFormat(&Rect, DT_TOP | DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 0.5f, 1.0f));
+
+}
+
+//CDXSampleCore 绘制fps
+void CDXSampleCore::DXSampleCoreDrawFPS()
+{
+	m_pCerasusfpsMain->CCerasusfpsGetfps();				//Direct3D绘制静态信息
+	m_pCerasusfpsMain->CCerasusfpsDrawfps(g_hWnd);		//Direct3D绘制fps
 }
 
