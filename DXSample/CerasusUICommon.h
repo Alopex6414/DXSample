@@ -17,14 +17,35 @@
 //Include Direct Common Header File
 #include "DirectCommon.h"
 #include "DirectFont.h"
+#include "DirectSprite.h"
 #include "DirectGraphics3D.h"
 #include "DirectThreadSafe.h"
 
 #include "CerasusUnit.h"
-#include "CerasusGrowArray.h"
+
+//Include C/C++ Standard Header File
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <queue>
+#include <map>
+
+//Using C/C++ Class Namespace
+using namespace std;
 
 //Macro Definition
 #define MAX_CONTROL_STATES 6
+
+#define EVENT_BUTTON_CLICKED                0x0101
+#define EVENT_COMBOBOX_SELECTION_CHANGED    0x0201
+#define EVENT_RADIOBUTTON_CHANGED           0x0301
+#define EVENT_CHECKBOX_CHANGED              0x0401
+#define EVENT_SLIDER_VALUE_CHANGED          0x0501
+#define EVENT_EDITBOX_STRING                0x0601
+#define EVENT_EDITBOX_CHANGE                0x0602
+#define EVENT_LISTBOX_ITEM_DBLCLK           0x0701
+#define EVENT_LISTBOX_SELECTION             0x0702
+#define EVENT_LISTBOX_SELECTION_END         0x0703
 
 //Enum Definition
 enum CERASUS_CONTROL_TYPE
@@ -50,6 +71,15 @@ enum CERASUS_CONTROL_STATE
 	CERASUS_STATE_MOUSEOVER,
 	CERASUS_STATE_PRESSED,
 };
+
+//Struct Definition
+
+//Class Definition
+class CCerasusDialog;
+class CCerasusControl;
+class CCerasusStatic;
+class CCerasusButton;
+class CCerasusResourceManager;
 
 #endif // !__CERASUSUICOMMON_H_
 

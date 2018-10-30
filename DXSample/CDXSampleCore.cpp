@@ -17,11 +17,13 @@ CDXSampleCore::CDXSampleCore()
 	m_pDirectGraphicsMain = NULL;
 	m_pDirectGraphics3DMain = NULL;
 	m_pCerasusfpsMain = NULL;
+	m_pCerasusStatic = NULL;
 }
 
 //CDXSampleCore 析构函数
 CDXSampleCore::~CDXSampleCore()
 {
+	SAFE_DELETE(m_pCerasusStatic);
 	SAFE_DELETE(m_pCerasusfpsMain);
 	SAFE_DELETE(m_pDirectGraphics3DMain);
 	SAFE_DELETE(m_pDirectGraphicsMain);
@@ -69,12 +71,15 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 		return FALSE;
 	}
 
+	//CerasusStatic初始化
+
 	return TRUE;
 }
 
 //CDXSampleCore 释放
 void CDXSampleCore::DXSampleCoreRelease()
 {
+	SAFE_DELETE(m_pCerasusStatic);
 	SAFE_DELETE(m_pCerasusfpsMain);
 	SAFE_DELETE(m_pDirectGraphics3DMain);
 	SAFE_DELETE(m_pDirectGraphicsMain);

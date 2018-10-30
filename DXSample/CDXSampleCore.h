@@ -70,6 +70,7 @@ private:
 
 private:
 	CCerasusfps* m_pCerasusfpsMain;
+	CCerasusStatic* m_pCerasusStatic;
 
 public:
 	CDXSampleCore();		//¹¹Ôìº¯Êý
