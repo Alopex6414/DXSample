@@ -11,19 +11,23 @@
 */
 #include "CDXSampleCore.h"
 
+#define IDC_BUTTON_SAMPLE	1
+
 //CDXSampleCore 构造函数
 CDXSampleCore::CDXSampleCore()
 {
 	m_pDirectGraphicsMain = NULL;
 	m_pDirectGraphics3DMain = NULL;
 	m_pCerasusfpsMain = NULL;
-	m_pCerasusStatic = NULL;
+	m_pResourceManager = NULL;
+	m_pSakuraDialog = NULL;
 }
 
 //CDXSampleCore 析构函数
 CDXSampleCore::~CDXSampleCore()
 {
-	SAFE_DELETE(m_pCerasusStatic);
+	SAFE_DELETE(m_pResourceManager);
+	SAFE_DELETE(m_pSakuraDialog);
 	SAFE_DELETE(m_pCerasusfpsMain);
 	SAFE_DELETE(m_pDirectGraphics3DMain);
 	SAFE_DELETE(m_pDirectGraphicsMain);
@@ -62,7 +66,7 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 		return FALSE;
 	}
 
-	//Cerasusfps初始化
+	//Cerasusfps 初始化
 	m_pCerasusfpsMain = new CCerasusfps(pD3D9Device);
 	hr = m_pCerasusfpsMain->CCerasusfpsInit(20);
 	if (FAILED(hr))
@@ -71,7 +75,25 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 		return FALSE;
 	}
 
-	//CerasusStatic初始化
+	//SakuraResourceManager初始化
+	m_pResourceManager = new CSakuraResourceManager();
+	m_pResourceManager->OnCreate(pD3D9Device);
+
+	//SakuraDialog初始化
+	m_pSakuraDialog = new CSakuraDialog();
+	m_pSakuraDialog->OnCreate(m_pResourceManager);
+	m_pSakuraDialog->SetLocation(0, 0);
+	m_pSakuraDialog->SetSize(960, 720);
+
+	CUFont sFont = { 0 };
+	wcscpy_s(sFont.strFontName, MAX_PATH, _T("Consolas"));
+	sFont.nFontSize = 20;
+	m_pSakuraDialog->SetFontRes(&sFont);
+
+	m_pSakuraDialog->AddStatic(1, _T("Hello,World!"), 240, 240, 200, 50);
+	m_pSakuraDialog->AddStatic(2, _T("Can you Speak Chinese?"), 600, 400, 200, 50);
+	m_pSakuraDialog->AddFont(1, SAKURA_CONTROL_STATIC, 0, SAKURA_STATE_NORMAL, 0);
+	m_pSakuraDialog->AddFont(2, SAKURA_CONTROL_STATIC, 0, SAKURA_STATE_NORMAL, 0);
 
 	return TRUE;
 }
@@ -79,7 +101,8 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 //CDXSampleCore 释放
 void CDXSampleCore::DXSampleCoreRelease()
 {
-	SAFE_DELETE(m_pCerasusStatic);
+	SAFE_DELETE(m_pResourceManager);
+	SAFE_DELETE(m_pSakuraDialog);
 	SAFE_DELETE(m_pCerasusfpsMain);
 	SAFE_DELETE(m_pDirectGraphics3DMain);
 	SAFE_DELETE(m_pDirectGraphicsMain);
@@ -132,6 +155,9 @@ void CDXSampleCore::DXSampleCoreRender()
 	m_pDirectGraphics3DMain->DirectGraphics3DRenderStateLightDisable();
 	m_pDirectGraphics3DMain->DirectGraphics3DRenderStateSetting();
 	m_pDirectGraphics3DMain->DirectGraphics3DRenderStateAlphaDisable();
+
+	m_pSakuraDialog->GetControl(1)->Render();
+	m_pSakuraDialog->GetControl(2)->Render();
 
 	DXSampleCoreDrawStatic();
 	DXSampleCoreDrawFPS();

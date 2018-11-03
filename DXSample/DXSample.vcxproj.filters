@@ -15,25 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CerasusBlend.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CerasusControl.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CerasusElement.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Cerasusfps.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CerasusGrowArray.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CerasusStatic.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CerasusUICommon.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CerasusUnit.h">
@@ -96,13 +78,28 @@
     <ClInclude Include="CDXSampleCore.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CerasusButton.h">
+    <ClInclude Include="SakuraBlend.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CerasusDialog.h">
+    <ClInclude Include="SakuraButton.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CerasusResourceManager.h">
+    <ClInclude Include="SakuraControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraElement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraStatic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraUICommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraResourceManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -117,27 +114,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CDXSampleCore.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusBlend.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusButton.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusControl.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusElement.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusResourceManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CerasusStatic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

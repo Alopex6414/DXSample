@@ -46,14 +46,16 @@
 #include "DirectSprite.h"
 #include "DirectFont.h"
 
-#include "CerasusUICommon.h"
 #include "Cerasusfps.h"
-#include "CerasusBlend.h"
-#include "CerasusControl.h"
-#include "CerasusElement.h"
-#include "CerasusGrowArray.h"
-#include "CerasusStatic.h"
 #include "CerasusUnit.h"
+
+#include "SakuraUICommon.h"
+#include "SakuraBlend.h"
+#include "SakuraElement.h"
+#include "SakuraControl.h"
+#include "SakuraStatic.h"
+#include "SakuraButton.h"
+#include "SakuraDialog.h"
 
 //Include Window Basic Header File
 #include "WinUtilities.h"
@@ -70,7 +72,10 @@ private:
 
 private:
 	CCerasusfps* m_pCerasusfpsMain;
-	CCerasusStatic* m_pCerasusStatic;
+
+protected:
+	CSakuraResourceManager* m_pResourceManager;
+	CSakuraDialog* m_pSakuraDialog;
 
 public:
 	CDXSampleCore();		//¹¹Ôìº¯Êý

@@ -3,24 +3,28 @@
 *     Copyright(c) 2018, Team Shanghai Dream Equinox
 *     All rights reserved.
 *
-* @file		CerasusUICommon.h
-* @brief	This File is CreasusUI Common Header File.
+* @file		SakuraUICommon.h
+* @brief	This File is SakuraGUI Common Header File.
 * @author	alopex
 * @version	v1.00a
 * @date		2018-10-16	v1.00a	alopex	Create Project.
 */
 #pragma once
 
-#ifndef __CERASUSUICOMMON_H_
-#define __CERASUSUICOMMON_H_
+#ifndef __SAKURAUICOMMON_H_
+#define __SAKURAUICOMMON_H_
 
 //Include Direct Common Header File
 #include "DirectCommon.h"
 #include "DirectFont.h"
+#include "DirectInput.h"
 #include "DirectSprite.h"
+#include "DirectSurface.h"
+#include "DirectTexture.h"
 #include "DirectGraphics3D.h"
 #include "DirectThreadSafe.h"
 
+//Include Cerasus Common Header File
 #include "CerasusUnit.h"
 
 //Include C/C++ Standard Header File
@@ -48,38 +52,46 @@ using namespace std;
 #define EVENT_LISTBOX_SELECTION_END         0x0703
 
 //Enum Definition
-enum CERASUS_CONTROL_TYPE
+enum SAKURA_CONTROL_TYPE
 {
-	CERASUS_CONTROL_BUTTON,
-	CERASUS_CONTROL_STATIC,
-	CERASUS_CONTROL_CHECKBOX,
-	CERASUS_CONTROL_RADIOBUTTON,
-	CERASUS_CONTROL_COMBOBOX,
-	CERASUS_CONTROL_SLIDER,
-	CERASUS_CONTROL_EDITBOX,
-	CERASUS_CONTROL_IMEEDITBOX,
-	CERASUS_CONTROL_LISTBOX,
-	CERASUS_CONTROL_SCROLLBAR,
+	SAKURA_CONTROL_BUTTON,
+	SAKURA_CONTROL_STATIC,
+	SAKURA_CONTROL_CHECKBOX,
+	SAKURA_CONTROL_RADIOBUTTON,
+	SAKURA_CONTROL_COMBOBOX,
+	SAKURA_CONTROL_SLIDER,
+	SAKURA_CONTROL_EDITBOX,
+	SAKURA_CONTROL_IMEEDITBOX,
+	SAKURA_CONTROL_LISTBOX,
+	SAKURA_CONTROL_SCROLLBAR,
 };
 
-enum CERASUS_CONTROL_STATE
+enum SAKURA_CONTROL_STATE
 {
-	CERASUS_STATE_NORMAL,
-	CERASUS_STATE_DISABLED,
-	CERASUS_STATE_HIDDEN,
-	CERASUS_STATE_FOCUS,
-	CERASUS_STATE_MOUSEOVER,
-	CERASUS_STATE_PRESSED,
+	SAKURA_STATE_NORMAL,
+	SAKURA_STATE_DISABLED,
+	SAKURA_STATE_HIDDEN,
+	SAKURA_STATE_FOCUS,
+	SAKURA_STATE_MOUSEOVER,
+	SAKURA_STATE_PRESSED,
 };
 
 //Struct Definition
+typedef struct
+{
+	WCHAR strFontName[MAX_PATH];
+	int nFontSize;
+} CUFont, *LPCUFont;
 
 //Class Definition
-class CCerasusDialog;
-class CCerasusControl;
-class CCerasusStatic;
-class CCerasusButton;
-class CCerasusResourceManager;
+class CSakuraResourceManager;
+class CSakuraDialog;
+class CSakuraControl;
+class CSakuraStatic;
+class CSakuraButton;
 
-#endif // !__CERASUSUICOMMON_H_
+//Function Declaration
+typedef VOID(CALLBACK*LPCALLBACKSAKURAGUIEVENT)(UINT nEvent, int nControlID, CSakuraControl* pControl, void* pUserContext);
+
+#endif // !__SAKURAUICOMMON_H_
 
