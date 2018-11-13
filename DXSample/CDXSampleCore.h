@@ -73,7 +73,7 @@ private:
 private:
 	CCerasusfps* m_pCerasusfpsMain;
 
-protected:
+public:
 	CSakuraResourceManager* m_pResourceManager;
 	CSakuraDialog* m_pSakuraDialog;
 

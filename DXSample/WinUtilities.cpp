@@ -10,6 +10,9 @@
 * @date		2017-11-28
 */
 #include "WinUtilities.h"
+#include "CDXSampleCore.h"
+
+extern CDXSampleCore g_cDXSampleCore;
 
 //WinUtilities主要用于Win32窗口项目注册窗口、初始化、消息处理...
 //Variable
@@ -120,6 +123,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
+
+	if (g_cDXSampleCore.m_pSakuraDialog)
+	{
+		g_cDXSampleCore.m_pSakuraDialog->MsgProc(hWnd, message, wParam, lParam);
+	}
 
 	switch (message)
 	{

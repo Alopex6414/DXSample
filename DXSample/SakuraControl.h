@@ -57,9 +57,6 @@ protected:
 	RECT m_rcBoundingBox;			// CSakuraControl 控件使能区域
 
 protected:
-	LPDIRECT3DDEVICE9	m_pD3D9Device;									// CSakuraBlendFont D3D9渲染设备
-
-protected:
 	virtual void	SAKURACONTROL_CALLMETHOD UpdateRects();				// CSakuraControl 更新控件矩形
 
 public:
@@ -74,8 +71,7 @@ public:
 	virtual bool	SAKURACONTROL_CALLMETHOD	HandleKeyboard(UINT uMsg, WPARAM wParam, LPARAM lParam);			// CSakuraControl 键盘消息处理
 	virtual bool	SAKURACONTROL_CALLMETHOD	HandleMouse(UINT uMsg, POINT pt, WPARAM wParam, LPARAM lParam);		// CSakuraControl 鼠标消息处理
 
-	void				SAKURACONTROL_CALLMETHOD	SetDevice(LPDIRECT3DDEVICE9	pD3D9Device);						// CSakuraControl 设置渲染设备
-	LPDIRECT3DDEVICE9	SAKURACONTROL_CALLMETHOD	GetDevice() const;												// CSakuraControl 获取渲染设备
+	vector<CSakuraElement*>&	SAKURACONTROL_CALLMETHOD	GetElements();	// CSakuraControl 获取控件渲染元素
 
 	virtual bool	SAKURACONTROL_CALLMETHOD	CanHaveFocus();				// CSakuraControl 是否拥有焦点
 	virtual void	SAKURACONTROL_CALLMETHOD	OnFocusIn();				// CSakuraControl 设置焦点
@@ -97,8 +93,7 @@ public:
 	UINT			SAKURACONTROL_CALLMETHOD	GetHotkey();				// CSakuraControl 获取虚拟键值
 	void			SAKURACONTROL_CALLMETHOD	SetUserData(void* pUserData);			// CSakuraControl 设置用户数据
 	void*			SAKURACONTROL_CALLMETHOD	GetUserData();				// CSakuraControl 获取用户数据
-	CSakuraElement*	SAKURACONTROL_CALLMETHOD	GetElement(UINT iElement);											// CSakuraControl 获取渲染元素
-	HRESULT			SAKURACONTROL_CALLMETHOD	SetElement(UINT iElement, CSakuraElement* pElement);				// CSakuraControl 设置渲染元素
+	CSakuraElement*&SAKURACONTROL_CALLMETHOD	GetElement(UINT iElement);	// CSakuraControl 获取渲染元素
 
 };
 

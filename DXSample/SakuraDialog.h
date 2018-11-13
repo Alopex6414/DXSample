@@ -17,9 +17,12 @@
 //Include SakuraGUI Common Header File
 #include "SakuraUICommon.h"
 #include "SakuraResourceManager.h"
+#include "SakuraResource.h"
 #include "SakuraControl.h"
 #include "SakuraStatic.h"
 #include "SakuraButton.h"
+
+#include "DirectGraphics.h"
 
 //Macro Definition
 #ifdef	CERASUS_EXPORTS
@@ -59,6 +62,10 @@ private:
 	void*						m_pCallbackEventUserContext;		// CSakuraDialog 窗口事件回调用户参数
 
 	vector<CSakuraControl*>		m_vecControls;						// CSakuraDialog 窗口添加的控件数组
+	vector<CSakuraElementHolder*>	m_vecDefaultControls;			// CSakuraDialog 窗口默认控件元素数组
+
+protected:
+	CCerasusUnit*	m_pDialogGraphics;					// CSakuraDialog 窗口绘制背景
 
 public:
 	bool	m_bNonUserEvents;							// CSakuraDialog 用户事件标志
@@ -66,14 +73,20 @@ public:
 	bool	m_bMouseInput;								// CSakuraDialog 鼠标输入标志
 
 protected:
-	void	OnMouseMove(POINT pt);						// CSakuraDialog 鼠标移动
+	void	SAKURADIALOG_CALLMETHOD	OnMouseMove(POINT pt);													// CSakuraDialog 鼠标移动
+	void	SAKURADIALOG_CALLMETHOD	InitDefaultElement();													// CSakuraDialog 窗口控件默认资源初始化
 
 public:
 	CSakuraDialog();
 	~CSakuraDialog();
 
 	void	SAKURADIALOG_CALLMETHOD	OnCreate(CSakuraResourceManager* pManager);								// CSakuraDialog 窗口初始化响应
+	void	SAKURADIALOG_CALLMETHOD	OnCreate(CSakuraResourceManager* pManager, CUUint sUnit);				// CSakuraDialog 窗口初始化响应
+	void	SAKURADIALOG_CALLMETHOD	OnCreate(CSakuraResourceManager* pManager, CUUintEx sUnit);				// CSakuraDialog 窗口初始化响应
 
+	void	SAKURADIALOG_CALLMETHOD	OnLost();																// CSakuraDialog 窗口丢失设备
+	void	SAKURADIALOG_CALLMETHOD	OnReset();																// CSakuraDialog 窗口重置设备
+	
 	bool	SAKURADIALOG_CALLMETHOD	MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);			// CSakuraDialog 窗口消息处理
 
 	HRESULT SAKURADIALOG_CALLMETHOD	AddStatic(int ID, LPCWSTR strText, int x, int y, int width, int height, bool bIsDefault = false, CSakuraStatic** ppCreated = NULL);							// CSakuraDialog 窗口添加静态控件
@@ -92,6 +105,10 @@ public:
 	CSakuraControl*	SAKURADIALOG_CALLMETHOD	GetControl(int ID);												// CSakuraDialog 获取控件指针
 	CSakuraControl*	SAKURADIALOG_CALLMETHOD	GetControl(int ID, UINT nControlType);							// CSakuraDialog 获取控件指针
 	CSakuraControl*	SAKURADIALOG_CALLMETHOD	GetControlAtPoint(POINT pt);									// CSakuraDialog 获取鼠标所在的控件指针
+
+	HRESULT	SAKURADIALOG_CALLMETHOD SetDefaultElement(UINT nControlType, UINT iElement, CSakuraElement** ppElement);				// CSakuraDialog 设置默认控件元素
+	CSakuraElement*	SAKURADIALOG_CALLMETHOD	GetDefaultElement(UINT nControlType, UINT iElement);									// CSakuraDialog 获取默认控件元素
+	void	SAKURADIALOG_CALLMETHOD RemoveAllDefaultElements();												// CSakuraDialog 窗口移除所有默认元素
 
 	void	SAKURADIALOG_CALLMETHOD	RemoveControl(int nID);													// CSakuraDialog 窗口移除控件
 	void	SAKURADIALOG_CALLMETHOD RemoveAllControls();													// CSakuraDialog 窗口移除控件(ALL)
@@ -124,6 +141,8 @@ public:
 	CUUintEx*	SAKURADIALOG_CALLMETHOD	GetTextureExRes(UINT Index);										// CSakuraDialog 窗口获取纹理资源(Ex)
 
 	static void	SAKURADIALOG_CALLMETHOD	ClearFocus();														// CSakuraDialog 清除控件焦点
+
+	HRESULT	SAKURADIALOG_CALLMETHOD	OnRender();																// CSakuraDialog 窗口渲染
 
 };
 

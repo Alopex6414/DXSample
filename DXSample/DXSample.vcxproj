@@ -148,6 +148,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SakuraBlend.h" />
     <ClInclude Include="SakuraButton.h" />
+    <ClInclude Include="SakuraCheckBox.h" />
     <ClInclude Include="SakuraControl.h" />
     <ClInclude Include="SakuraDialog.h" />
     <ClInclude Include="SakuraElement.h" />
