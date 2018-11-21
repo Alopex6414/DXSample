@@ -105,6 +105,12 @@
     <ClInclude Include="SakuraCheckBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SakuraRadioButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraComboBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">

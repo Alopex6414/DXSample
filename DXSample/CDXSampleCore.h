@@ -56,6 +56,8 @@
 #include "SakuraStatic.h"
 #include "SakuraButton.h"
 #include "SakuraDialog.h"
+#include "SakuraCheckBox.h"
+#include "SakuraResource.h"
 
 //Include Window Basic Header File
 #include "WinUtilities.h"

@@ -571,9 +571,51 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 	m_pResourceManager = new CSakuraResourceManager();
 	m_pResourceManager->OnCreate(pD3D9Device);
 
+	CUUint sUnitEx = { 0 };
+	sUnitEx.nTextureWidth = 960;
+	sUnitEx.nTextureHeight = 720;
+	sUnitEx.nScreenWidth = 960;
+	sUnitEx.nScreenHeight = 720;
+	sUnitEx.fUnitAlpha = 1.0f;
+	sUnitEx.pTextureStr = (LPWSTR)_T("Res\\bk.png");
+	sUnitEx.rcUnit.left = 0;
+	sUnitEx.rcUnit.right = 960;
+	sUnitEx.rcUnit.top = 0;
+	sUnitEx.rcUnit.bottom = 720;
+	sUnitEx.rcUnitTex.left = 0;
+	sUnitEx.rcUnitTex.right = 960;
+	sUnitEx.rcUnitTex.top = 0;
+	sUnitEx.rcUnitTex.bottom = 720;
+
+	//世界变换
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleX = 1.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleY = 1.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleZ = 1.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateX = 0.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateY = 0.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateZ = 0.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateX = 0.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateY = 0.0f;
+	sUnitEx.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateZ = 0.0f;
+
+	//取景变换
+	sUnitEx.sCoordsTransformPara.sViewTransformPara.vAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	sUnitEx.sCoordsTransformPara.sViewTransformPara.vUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	sUnitEx.sCoordsTransformPara.sViewTransformPara.vEye = D3DXVECTOR3(0.0f, 0.0f, -(720 * 0.5f));
+
+	//投影变换
+	sUnitEx.sCoordsTransformPara.sPrespectiveTransformPara.fovy = D3DX_PI / 2.0f;;
+	sUnitEx.sCoordsTransformPara.sPrespectiveTransformPara.fAspect = (float)(960 * 1.0f / 720);
+	sUnitEx.sCoordsTransformPara.sPrespectiveTransformPara.fZn = 1.0f;
+	sUnitEx.sCoordsTransformPara.sPrespectiveTransformPara.fZf = (720 * 0.5f);
+
+	//视口变换
+	sUnitEx.sCoordsTransformPara.sViewPortTransformPara.nUserWidth = 960;
+	sUnitEx.sCoordsTransformPara.sViewPortTransformPara.nUserHeight = 720;
+
 	//SakuraDialog初始化
 	m_pSakuraDialog = new CSakuraDialog();
-	m_pSakuraDialog->OnCreate(m_pResourceManager);
+	m_pSakuraDialog->OnCreate(m_pResourceManager, sUnitEx);
 	m_pSakuraDialog->SetLocation(0, 0);
 	m_pSakuraDialog->SetSize(960, 720);
 
@@ -632,14 +674,93 @@ BOOL CDXSampleCore::DXSampleCoreInit()
 
 	m_pSakuraDialog->SetTextrueExRes(&sUnit);
 
+	CUUintEx sUnitNormal = { 0 };
+
+	sUnitNormal.nScreenWidth = USER_SCREENWIDTH;
+	sUnitNormal.nScreenHeight = USER_SCREENHEIGHT;
+	sUnitNormal.nTextureWidth = 16;
+	sUnitNormal.nTextureHeight = 16;
+	sUnitNormal.fUnitAlpha = 1.0f;
+	sUnitNormal.pTextureArr = CSakuraResource::m_ucCheckBox_UnChecked;
+	sUnitNormal.nTextureArrSize = sizeof(CSakuraResource::m_ucCheckBox_UnChecked);
+	sUnitNormal.rcUnit.left = 100;
+	sUnitNormal.rcUnit.top = 100;
+	sUnitNormal.rcUnit.right = 116;
+	sUnitNormal.rcUnit.bottom = 116;
+	sUnitNormal.rcUnitTex.left = 0;
+	sUnitNormal.rcUnitTex.top = 0;
+	sUnitNormal.rcUnitTex.right = 16;
+	sUnitNormal.rcUnitTex.bottom = 16;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleX = 1.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleY = 1.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleZ = 1.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateX = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateY = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateZ = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateX = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateY = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateZ = 0.0f;
+	sUnitNormal.sCoordsTransformPara.sViewTransformPara.vAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	sUnitNormal.sCoordsTransformPara.sViewTransformPara.vUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	sUnitNormal.sCoordsTransformPara.sViewTransformPara.vEye = D3DXVECTOR3(0.0f, 0.0f, -(USER_SCREENHEIGHT * 0.5f));
+	sUnitNormal.sCoordsTransformPara.sPrespectiveTransformPara.fovy = D3DX_PI / 2.0f;;
+	sUnitNormal.sCoordsTransformPara.sPrespectiveTransformPara.fAspect = (float)(USER_SCREENWIDTH * 1.0f / USER_SCREENHEIGHT);
+	sUnitNormal.sCoordsTransformPara.sPrespectiveTransformPara.fZn = 1.0f;
+	sUnitNormal.sCoordsTransformPara.sPrespectiveTransformPara.fZf = (USER_SCREENHEIGHT * 0.5f);
+	sUnitNormal.sCoordsTransformPara.sViewPortTransformPara.nUserWidth = USER_SCREENWIDTH;
+	sUnitNormal.sCoordsTransformPara.sViewPortTransformPara.nUserHeight = USER_SCREENHEIGHT;
+
+	m_pSakuraDialog->SetTextrueExRes(&sUnitNormal);
+
+	CUUintEx sUnitPressed = { 0 };
+
+	sUnitPressed.nScreenWidth = USER_SCREENWIDTH;
+	sUnitPressed.nScreenHeight = USER_SCREENHEIGHT;
+	sUnitPressed.nTextureWidth = 16;
+	sUnitPressed.nTextureHeight = 16;
+	sUnitPressed.fUnitAlpha = 1.0f;
+	sUnitPressed.pTextureArr = CSakuraResource::m_ucCheckBox_Checked;
+	sUnitPressed.nTextureArrSize = sizeof(CSakuraResource::m_ucCheckBox_Checked);
+	sUnitPressed.rcUnit.left = 100;
+	sUnitPressed.rcUnit.top = 100;
+	sUnitPressed.rcUnit.right = 116;
+	sUnitPressed.rcUnit.bottom = 116;
+	sUnitPressed.rcUnitTex.left = 0;
+	sUnitPressed.rcUnitTex.top = 0;
+	sUnitPressed.rcUnitTex.right = 16;
+	sUnitPressed.rcUnitTex.bottom = 16;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleX = 1.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleY = 1.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sScalePara.fScaleZ = 1.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateX = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateY = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sRotatePara.fRotateZ = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateX = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateY = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sWorldTransformPara.sTranslatePara.fTranslateZ = 0.0f;
+	sUnitPressed.sCoordsTransformPara.sViewTransformPara.vAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	sUnitPressed.sCoordsTransformPara.sViewTransformPara.vUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	sUnitPressed.sCoordsTransformPara.sViewTransformPara.vEye = D3DXVECTOR3(0.0f, 0.0f, -(USER_SCREENHEIGHT * 0.5f));
+	sUnitPressed.sCoordsTransformPara.sPrespectiveTransformPara.fovy = D3DX_PI / 2.0f;;
+	sUnitPressed.sCoordsTransformPara.sPrespectiveTransformPara.fAspect = (float)(USER_SCREENWIDTH * 1.0f / USER_SCREENHEIGHT);
+	sUnitPressed.sCoordsTransformPara.sPrespectiveTransformPara.fZn = 1.0f;
+	sUnitPressed.sCoordsTransformPara.sPrespectiveTransformPara.fZf = (USER_SCREENHEIGHT * 0.5f);
+	sUnitPressed.sCoordsTransformPara.sViewPortTransformPara.nUserWidth = USER_SCREENWIDTH;
+	sUnitPressed.sCoordsTransformPara.sViewPortTransformPara.nUserHeight = USER_SCREENHEIGHT;
+
+	m_pSakuraDialog->SetTextrueExRes(&sUnitPressed);
+
 	m_pSakuraDialog->AddStatic(1, _T("Hello,World!"), 240, 240, 200, 50);
 	m_pSakuraDialog->AddStatic(2, _T("Can you Speak Chinese?"), 600, 400, 200, 50);
 	m_pSakuraDialog->AddStatic(3, _T("欢迎来到DXSample"), 400, 300, 160, 120);
 	m_pSakuraDialog->AddButton(4, _T(""), 500, 100, 72, 72, 0, true);
+	m_pSakuraDialog->AddCheckBox(5, _T(""), 100, 100, 16, 16, false, 0, true);
 	m_pSakuraDialog->AddFont(1, SAKURA_CONTROL_STATIC, 0, SAKURA_STATE_NORMAL, 0);
 	m_pSakuraDialog->AddFont(2, SAKURA_CONTROL_STATIC, 0, SAKURA_STATE_NORMAL, 0);
 	m_pSakuraDialog->AddFont(3, SAKURA_CONTROL_STATIC, 0, SAKURA_STATE_NORMAL, 1);
 	m_pSakuraDialog->AddTextureEx(4, SAKURA_CONTROL_BUTTON, 0, SAKURA_STATE_NORMAL, 0);
+	m_pSakuraDialog->AddTextureEx(5, SAKURA_CONTROL_CHECKBOX, 0, SAKURA_STATE_NORMAL, 1);
+	m_pSakuraDialog->AddTextureEx(5, SAKURA_CONTROL_CHECKBOX, 0, SAKURA_STATE_PRESSED, 2);
 
 	static_cast<CSakuraStatic*>(m_pSakuraDialog->GetControl(3))->SetColor(D3DCOLOR_ARGB(255, 255, 255, 0));
 
