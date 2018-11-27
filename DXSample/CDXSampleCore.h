@@ -95,6 +95,7 @@ protected:
 
 };
 
+extern void __stdcall DXSampleSakuraGUIEvent(UINT nEvent, int nControlID, CSakuraControl * pControl, void * pUserContext);
 
 
 #endif // !__CDXSAMPLECORE_H_
