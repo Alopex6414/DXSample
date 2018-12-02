@@ -155,6 +155,8 @@
     <ClInclude Include="SakuraElement.h" />
     <ClInclude Include="SakuraRadioButton.h" />
     <ClInclude Include="SakuraResourceManager.h" />
+    <ClInclude Include="SakuraScrollBar.h" />
+    <ClInclude Include="SakuraSlider.h" />
     <ClInclude Include="SakuraStatic.h" />
     <ClInclude Include="SakuraUICommon.h" />
     <ClInclude Include="WinMain.h" />

@@ -111,6 +111,12 @@
     <ClInclude Include="SakuraComboBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SakuraScrollBar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SakuraSlider.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">

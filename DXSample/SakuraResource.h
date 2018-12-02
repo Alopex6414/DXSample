@@ -30,6 +30,9 @@
 class SAKURARESOURCE_API CSakuraResource
 {
 public:
+	// Button
+	static unsigned char m_ucButton_Native[2935];
+
 	// CheckBox
 	static unsigned char m_ucCheckBox_UnChecked[720];
 	static unsigned char m_ucCheckBox_Checked[822];
@@ -38,6 +41,11 @@ public:
 	// RadioButton
 	static unsigned char m_ucRadioButton_UnChecked[851];
 	static unsigned char m_ucRadioButton_Checked[900];
+
+	// StarButton
+	static unsigned char m_ucStarButton_Empty[900];
+	static unsigned char m_ucStarButton_Full[862];
+	static unsigned char m_ucStarButton_Half[889];
 
 };
 
